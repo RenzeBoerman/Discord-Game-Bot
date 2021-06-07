@@ -12,24 +12,20 @@ class Ping(commands.Cog):
     # Krijg uitleg over DCLingo
     @commands.command()
     async def uitleg(self, ctx):
-        await ctx.send(format("Lingo is een heel simpel spel! De regels: \n"
-                              "1. Het is altijd een 5 letter woord \n"
-                              "2. Je hebt 5 pogingen om het goeie woord te raden \n"
-                              "3. Een woord is speler gebonden(Als jij met een woord bezig bent kan alleen jij die "
-                              "raden) \n "
-                              "4. Je hebt 2 minuten de tijd om een woord te raden. \n"
-                              
-                              "\n"
-                              "Als een letter op de goede plek staat is het een hoofdletter. \n"
-                              "Als een letter in het woord zit maar niet op de goeie plek staat is het een kleine "
-                              "letter. \n"
-                              "Als een letter fout is is het een _."))
+        embed = discord.Embed(title="LINGO uitleg", color=discord.Colour.gold())
+        embed.add_field(name="Regel 1:", value="1. Ieder woord is 5 letters!", inline=True)
+        embed.add_field(name="Regel 2:", value="2. Je hebt 2 minuten na ieder gok om een nieuwe gok te doen!", inline=True)
+        embed.add_field(name="Regel 3:", value="3. Je hebt 5 beurten daarna ben je af!")
+        embed.add_field(name="Documentatie GOED:", value="Een letter op de GOEDE plek is DIKGEDRUKT en een HOOFDLETTEE!", inline=True)
+        embed.add_field(name="Documentatie BIJNA:", value="Een letter die IN het WOORD zit maar niet op de goede plek is een HOOFDLETTER", inline=True)
+        embed.add_field(name="Documentatie FOUT", value="Een letter die NIET in het woord voorkomt is DOORGESTREEPT en een KLEINE LETTER", inline=True)
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def lingo(self, ctx):
 
         mijn_lingo = Lingo()
-        turns = 6
+        turns = 5
 
         # Functie die kijkt naar de volgende messages en of het van de orginele user is!
         def check(message):

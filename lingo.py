@@ -20,12 +20,12 @@ class Lingo:
         # Vergelijk elke letter uit de invoer string met het te raden woord
         uitvoer = ""
         for i in range(5):
-            if invoer[i] == self.woord[i]:
-                uitvoer += str.upper("**" + invoer[i] + "**")
+            if invoer[i] == " " + self.woord[i] + " ":
+                uitvoer += str.upper(" **" + invoer[i] + "** ")
             elif invoer[i] in self.woord:
                 uitvoer += str.upper(invoer[i])
             else:
-                uitvoer += "~~" + invoer[i] + "~~"
+                uitvoer += " ~~" + invoer[i] + "~~ "
         return uitvoer
 
     # Selecteer een random woord
